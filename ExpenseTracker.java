@@ -197,29 +197,25 @@ public class ExpenseTracker extends JFrame {
                 JOptionPane.showMessageDialog(this, "Please enter a positive amount.");
                 return;
             }
-
             String category = categoryBox.getSelectedItem().toString().trim();
             if (category.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Please select or enter a category.");
                 return;
             }
-
             String description = descriptionField.getText().trim();
             if (description.isEmpty()) {
                 description = "No description";
             }
-
             Date date = dateChooser.getDate();
             if (date == null) date = new Date();
 
             Expense expense = new Expense(amount, category, description, date);
-
             expenseMap.putIfAbsent(category, new ArrayList<>());
             expenseMap.get(category).add(expense);
 
             JOptionPane.showMessageDialog(this, "Expense added successfully!");
-
             clearFields();
+
             updateExpenseTable();
             updateSummary();
             updateChart();
@@ -263,7 +259,7 @@ public class ExpenseTracker extends JFrame {
             double total = entry.getValue();
             double percentage = (grandTotal > 0) ? (total / grandTotal) * 100 : 0;
 
-            summary.append(String.format("%-15s: ₹%-10.2f (%.1f%%)\n", 
+            summary.append(String.format("%-15s: ₹%-10.2f (%.1f%%)\n",
                 entry.getKey(), total, percentage));
         }
 
@@ -396,7 +392,7 @@ public class ExpenseTracker extends JFrame {
                     // Draw legend item
                     g2d.fillRect(legendX, legendY - 10, 15, 15);
                     g2d.setColor(Color.BLACK);
-                    g2d.drawString(String.format("%s: ₹%.2f (%.1f%%)", 
+                    g2d.drawString(String.format("%s: ₹%.2f (%.1f%%)",
                         entry.getKey(), entry.getValue(), percentage),
                         legendX + 20, legendY);
 
@@ -426,8 +422,8 @@ public class ExpenseTracker extends JFrame {
         String category = (String) tableModel.getValueAt(selectedRow, 1);
         String description = (String) tableModel.getValueAt(selectedRow, 2);
 
-        if (JOptionPane.showConfirmDialog(this, 
-            "Are you sure you want to delete this expense?\n" + 
+        if (JOptionPane.showConfirmDialog(this,
+            "Are you sure you want to delete this expense?\n" +
             "Date: " + date + "\n" +
             "Category: " + category + "\n" +
             "Description: " + description,
@@ -440,8 +436,8 @@ public class ExpenseTracker extends JFrame {
                     Expense expense = it.next();
                     try {
                         Date expenseDate = dateFormat.parse(date);
-                        if (expense.getCategory().equals(category) && 
-                            expense.getDescription().equals(description) && 
+                        if (expense.getCategory().equals(category) &&
+                            expense.getDescription().equals(description) &&
                             expense.getDate().equals(expenseDate)) {
                             it.remove();
                             break;
@@ -474,7 +470,7 @@ public class ExpenseTracker extends JFrame {
 
         String[] categories = expenseMap.keySet().toArray(new String[0]);
         String selectedCategory = (String) JOptionPane.showInputDialog(
-            this, "Select category to filter:", "Filter", 
+            this, "Select category to filter:", "Filter",
             JOptionPane.QUESTION_MESSAGE, null, categories, categories[0]);
 
         if (selectedCategory != null) {
@@ -626,7 +622,7 @@ public class ExpenseTracker extends JFrame {
             dayBox = new JComboBox<>(days);
 
             // Months 1-12
-            String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+            String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
                               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
             monthBox = new JComboBox<>(months);
 
@@ -667,11 +663,11 @@ public class ExpenseTracker extends JFrame {
                 cal.set(Calendar.YEAR, year);
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, 1); // Set to 1st to avoid invalid date issues
-                
+
                 // Get maximum days for the selected month
                 int maxDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
                 day = Math.min(day, maxDays);
-                
+
                 cal.set(Calendar.DAY_OF_MONTH, day);
                 cal.set(Calendar.HOUR_OF_DAY, 0);
                 cal.set(Calendar.MINUTE, 0);

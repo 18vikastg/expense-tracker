@@ -7,23 +7,14 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/out/production/ExpenseTrackerProject/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/out/production/ExpenseTrackerProject/lib" recursive="false" />
-      </library>
-    </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/out/production/ExpenseTrackerProject/lib" />
+          <root url="file://$MODULE_DIR$/../New folder/Java-Swing-MySQL-Quiz-Game-main/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/../New folder/Java-Swing-MySQL-Quiz-Game-main/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>
